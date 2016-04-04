@@ -5,6 +5,12 @@ PATH
       tilt (>= 1.4, < 3)
       uber (~> 0.0.9)
 
+PATH
+  remote: ../trailblazer-cells
+  specs:
+    trailblazer-cells (0.0.1)
+      cells (>= 4.0.3, < 5.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -16,7 +22,17 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cells-hamlit (0.1.1)
+      cells (~> 4.0)
+      hamlit
+      hamlit-block (~> 0.3.0)
     dotenv (2.1.1)
+    hamlit (2.2.0)
+      temple (~> 0.7.6)
+      thor
+      tilt
+    hamlit-block (0.3.0)
+      hamlit (>= 2.0, < 2.4)
     hanami (0.7.2)
       bundler (~> 1.6)
       dotenv (~> 2.0)
@@ -75,6 +91,7 @@ GEM
     shotgun (0.9.1)
       rack (>= 1.0)
     sqlite3 (1.3.11)
+    temple (0.7.6)
     thor (0.19.1)
     tilt (2.0.2)
     uber (0.0.15)
@@ -90,11 +107,14 @@ DEPENDENCIES
   bundler
   capybara
   cells!
+  cells-hamlit
+  hamlit
   hanami (= 0.7.2)
   hanami-model (~> 0.5)
   minitest
   rake
   sqlite3
+  trailblazer-cells!
 
 BUNDLED WITH
    1.10.6
