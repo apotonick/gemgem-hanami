@@ -2,12 +2,13 @@ require "trailblazer/cells"
 # require "cell/concept"
 require_relative "../../product/cell/new.rb"
 
-module Web::Controllers::Product
+module Web::Controllers::Products
   class New
     include Web::Action
 
     def call(params)
-      self.body = Web::Product::Cell::New.(nil).()
+      # raise routes.inspect
+      self.body = Web::Product::Cell::New.(nil, routes: routes).()
     end
   end
 end

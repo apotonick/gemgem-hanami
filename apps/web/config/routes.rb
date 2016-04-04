@@ -1,3 +1,4 @@
-get '/products/new', to: 'product#new'
+resources :products
+
 # Configure your routes here
 # See: http://www.rubydoc.info/gems/hanami-router/#Usage

@@ -9,7 +9,11 @@ module Web::Product
       #   # "cells rule!"
       #   render :new
       # end
+      def routes
+        @options[:routes]
+      end
     end
+
   end
 end
 
