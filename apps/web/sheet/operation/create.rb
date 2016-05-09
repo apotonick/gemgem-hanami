@@ -27,6 +27,7 @@ module Sheet
       end
 
       def tags=(v)
+        raise v.inspect
         content.tags = v
       end
     end
@@ -36,8 +37,15 @@ module Sheet
 
     def model!(*)
       m= super
-      m.content={tags: "sdf"}
+      m.content={tags: nil}
       m
+    end
+
+    def process(params)
+      validate(params.to_h) do
+        # puts "@@@@@ #{contract.inspect}"
+        contract.save
+      end
     end
   end
 end

@@ -7,6 +7,10 @@ module Bootstrap
       def controller
         context[:controller]
       end
+
+      def routes
+        context[:routes]
+      end
     end
   end
 end
