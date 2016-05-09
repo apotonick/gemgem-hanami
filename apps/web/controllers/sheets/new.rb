@@ -2,12 +2,12 @@
 # DB.extension :pg_json
 
 Sequel::Model.strict_param_setting = false
+Sequel::Database.extension :pg_json
 module Sheet
   class Persistence < Sequel::Model(:sheets)
   end
 end
 
-Sheet::Persistence.db.extension :pg_json
 
 
 require "trailblazer/cells"
@@ -30,7 +30,7 @@ module Web::Controllers::Sheets
 
 
       self.body =
-        Web::Sheet::Cell::New.(nil,
+        Web::Sheet::Cell::New.(op.contract,
           context: { routes: routes, controller: self },
           layout:  Bootstrap::Cell::Layout
         ).()

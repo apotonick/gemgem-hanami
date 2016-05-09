@@ -10,6 +10,8 @@ gem "cells-hamlit"
 gem "hamlit"
 
 gem "trailblazer"
+gem "activemodel"
+gem "formular", path: "../formular"
 
 gem "pg"
 

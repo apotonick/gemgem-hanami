@@ -1,3 +1,16 @@
 %h1 Cells rule!!!
 
 %form{action: routes.sheets_path}
+
+- require "formular/frontend/bootstrap3"
+= Formular::Bootstrap3::Builder.new(model: model, errors: {}).form(action: routes.sheets_path, method: :post) do |f|
+  .row
+    = f.input :title, placeholder: "Title"
+
+  -# 3.times do |i|
+  - #f.nested :content do |c|
+  .row
+    = f.textarea :tags, placeholder: "Tags", rows: 1
+
+  .row
+    = f.button type: "Submit", class: ["btn btn-primary"]

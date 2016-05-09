@@ -1,7 +1,22 @@
+PATH
+  remote: ../formular
+  specs:
+    formular (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (4.2.6)
+      activesupport (= 4.2.6)
+      builder (~> 3.1)
+    activesupport (4.2.6)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     addressable (2.4.0)
+    builder (3.2.2)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -70,6 +85,8 @@ GEM
     http_router (0.11.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
+    i18n (0.7.0)
+    json (1.8.3)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     mime-types (3.0)
@@ -96,6 +113,7 @@ GEM
       rack (>= 1.0)
     temple (0.7.6)
     thor (0.19.1)
+    thread_safe (0.3.5)
     tilt (2.0.2)
     trailblazer (1.1.1)
       declarative
@@ -103,6 +121,8 @@ GEM
       uber (>= 0.0.15)
     trailblazer-cells (0.0.2)
       cells (>= 4.1.0.rc1, < 5.0.0)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     uber (0.0.15)
     url_mount (0.2.1)
       rack
@@ -113,10 +133,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel
   bundler
   capybara
   cells
   cells-hamlit
+  formular!
   hamlit
   hanami (= 0.7.2)
   hanami-model (~> 0.5)
