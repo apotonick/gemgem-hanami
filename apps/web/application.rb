@@ -219,10 +219,10 @@ module Web
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-view#Configuration
-      view.prepare do
-        include Hanami::Helpers
-        include Web::Assets::Helpers
-      end
+      # view.prepare do
+      #   include Hanami::Helpers
+      #   include Web::Assets::Helpers
+      # end
     end
 
     ##
@@ -271,3 +271,5 @@ module Web
     end
   end
 end
+
+Sequel::Model.db.extension :pg_json
