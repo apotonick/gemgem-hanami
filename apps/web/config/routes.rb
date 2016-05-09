@@ -1,4 +1,4 @@
-resources :products
+resources :sheets
 
 # Configure your routes here
 # See: http://www.rubydoc.info/gems/hanami-router/#Usage

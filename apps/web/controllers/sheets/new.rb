@@ -1,28 +1,36 @@
-require "trailblazer/cells"
-# require "cell/concept"
-require_relative "../../product/cell/new.rb"
-require_relative "../../bootstrap/cell/layout.rb"
-
-
-
 # DB.extension :pg_array
 # DB.extension :pg_json
 
 Sequel::Model.strict_param_setting = false
-class Sheet < Sequel::Model
+module Sheet
+  class Persistence < Sequel::Model(:sheets)
+  end
 end
 
-Sheet.db.extension :pg_json
+Sheet::Persistence.db.extension :pg_json
 
-module Web::Controllers::Products
+
+require "trailblazer/cells"
+# require "cell/concept"
+require_relative "../../sheet/operation/create.rb"
+require_relative "../../sheet/cell/new.rb"
+require_relative "../../bootstrap/cell/layout.rb"
+
+
+
+
+module Web::Controllers::Sheets
   class New
     include Web::Action
 
     include Hanami::Assets::Helpers # FIXME.
 
     def call(params)
+      op = Sheet::Create.present({})
+
+
       self.body =
-        Web::Product::Cell::New.(nil,
+        Web::Sheet::Cell::New.(nil,
           context: { routes: routes, controller: self },
           layout:  Bootstrap::Cell::Layout
         ).()

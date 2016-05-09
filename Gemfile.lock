@@ -9,13 +9,19 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    cells (4.1.0)
+    cells (4.1.1)
       tilt (>= 1.4, < 3)
       uber (>= 0.0.9)
     cells-hamlit (0.1.1)
       cells (~> 4.0)
       hamlit
       hamlit-block (~> 0.3.0)
+    declarative (0.0.7)
+      uber (>= 0.0.15)
+    disposable (0.2.6)
+      declarative (~> 0.0.6)
+      representable (>= 2.4.0, <= 3.1.0)
+      uber
     dotenv (2.1.1)
     hamlit (2.2.0)
       temple (~> 0.7.6)
@@ -78,12 +84,23 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (11.1.2)
+    reform (2.1.0)
+      disposable (>= 0.2.2, < 0.3.0)
+      representable (>= 2.4.0, < 3.1.0)
+      uber (~> 0.0.11)
+    representable (3.0.0)
+      declarative (~> 0.0.5)
+      uber (~> 0.0.15)
     sequel (4.34.0)
     shotgun (0.9.1)
       rack (>= 1.0)
     temple (0.7.6)
     thor (0.19.1)
     tilt (2.0.2)
+    trailblazer (1.1.1)
+      declarative
+      reform (>= 2.0.0, < 3.0.0)
+      uber (>= 0.0.15)
     trailblazer-cells (0.0.2)
       cells (>= 4.1.0.rc1, < 5.0.0)
     uber (0.0.15)
@@ -106,6 +123,7 @@ DEPENDENCIES
   minitest
   pg
   rake
+  trailblazer
   trailblazer-cells
 
 BUNDLED WITH

@@ -1,4 +1,4 @@
-module Web::Product
+module Web::Sheet
   module Cell
     # class New < ::Cell::Concept
     class New < Trailblazer::Cell

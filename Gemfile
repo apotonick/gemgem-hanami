@@ -9,6 +9,8 @@ gem "trailblazer-cells"#, path: "../trailblazer-cells"
 gem "cells-hamlit"
 gem "hamlit"
 
+gem "trailblazer"
+
 gem "pg"
 
 group :test do
