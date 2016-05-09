@@ -16,7 +16,8 @@ Hanami::Model.configure do
   #    adapter type: :sql, uri: 'postgres://localhost/gemgem_hanami_development'
   #    adapter type: :sql, uri: 'mysql://localhost/gemgem_hanami_development'
   #
-  adapter type: :sql, uri: ENV['GEMGEM_HANAMI_DATABASE_URL']
+  # adapter type: :sql, uri: ENV['GEMGEM_HANAMI_DATABASE_URL']
+  adapter type: :sql, uri: "postgres://nick:blabla@localhost/sheets"
 
   ##
   # Migrations
@@ -56,3 +57,4 @@ Hanami::Mailer.configure do
     # production :stmp, address: ENV['SMTP_PORT'], port: 1025
   end
 end.load!
+

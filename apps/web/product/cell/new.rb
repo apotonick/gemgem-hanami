@@ -10,7 +10,7 @@ module Web::Product
       #   render :new
       # end
       def routes
-        @options[:routes]
+        context[:routes]
       end
     end
 

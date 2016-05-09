@@ -9,7 +9,7 @@ gem "trailblazer-cells"#, path: "../trailblazer-cells"
 gem "cells-hamlit"
 gem "hamlit"
 
-gem 'sqlite3'
+gem "pg"
 
 group :test do
   gem 'minitest'
