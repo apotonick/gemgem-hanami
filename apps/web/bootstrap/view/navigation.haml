@@ -1,0 +1,19 @@
+-# navigation styled for Zurb Foundation 5
+-# the syntax for data-topbar may need to change for Zurb Foundation 5
+%nav.top-bar{"data-topbar" => true}
+  %ul.title-area
+    %li.name
+      = link_to 'Home', root_path
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        Menu
+  .top-bar-section
+    %ul
+      %li
+        = link_to "Users", users_path
+      %li
+        = link_to "Jobs", jobs_path
+      %li
+        = link_to "Create User", new_user_path
+      %li
+        = link_to "Create Job", new_job_path

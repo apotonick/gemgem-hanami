@@ -1,7 +1,7 @@
 require "trailblazer/cells"
 # require "cell/concept"
 require_relative "../../product/cell/new.rb"
-require_relative "../../foundation/cell/layout.rb"
+require_relative "../../bootstrap/cell/layout.rb"
 
 
 
@@ -24,7 +24,7 @@ module Web::Controllers::Products
       self.body =
         Web::Product::Cell::New.(nil,
           context: { routes: routes, controller: self },
-          layout:  Foundation::Cell::Layout
+          layout:  Bootstrap::Cell::Layout
         ).()
     end
   end
