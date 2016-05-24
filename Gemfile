@@ -9,7 +9,7 @@ gem "trailblazer-cells"#, path: "../trailblazer-cells"
 gem "cells-hamlit"
 gem "hamlit"
 
-gem "trailblazer"
+gem "trailblazer", path: "../trailblazer"
 gem "activemodel"
 gem "formular", path: "../formular"
 
@@ -20,6 +20,5 @@ group :test do
   gem 'capybara'
 end
 
-group :production do
-  # gem 'puma'
-end
+# gem "disposable", path: "../disposable"
+# gem "reform", path: "../reform"

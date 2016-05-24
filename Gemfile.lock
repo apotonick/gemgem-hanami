@@ -3,6 +3,14 @@ PATH
   specs:
     formular (0.1.0)
 
+PATH
+  remote: ../trailblazer
+  specs:
+    trailblazer (1.2.0)
+      declarative
+      reform (>= 2.0.0, < 3.0.0)
+      uber (>= 0.0.15)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -76,7 +84,7 @@ GEM
     hanami-router (0.6.2)
       hanami-utils (~> 0.7)
       http_router (~> 0.11)
-    hanami-utils (0.7.1)
+    hanami-utils (0.7.2)
     hanami-validations (0.5.0)
       hanami-utils (~> 0.7)
     hanami-view (0.6.1)
@@ -89,9 +97,9 @@ GEM
     json (1.8.3)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    mime-types (3.0)
+    mime-types (3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
+    mime-types-data (3.2016.0521)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     nokogiri (1.6.7.2)
@@ -114,11 +122,7 @@ GEM
     temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
-    trailblazer (1.1.1)
-      declarative
-      reform (>= 2.0.0, < 3.0.0)
-      uber (>= 0.0.15)
+    tilt (2.0.4)
     trailblazer-cells (0.0.2)
       cells (>= 4.1.0.rc1, < 5.0.0)
     tzinfo (1.2.2)
@@ -145,7 +149,7 @@ DEPENDENCIES
   minitest
   pg
   rake
-  trailblazer
+  trailblazer!
   trailblazer-cells
 
 BUNDLED WITH
