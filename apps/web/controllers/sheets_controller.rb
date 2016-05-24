@@ -41,6 +41,11 @@ module Web::Controllers::Sheets
     def call(params)
       op = Sheet::Create.present({})
 
+      # "prepopulate"
+      op.contract.notes.append({})
+      op.contract.notes.append({})
+      op.contract.notes.append({})
+
       render Web::Sheet::Cell::New, op.contract
     end
   end
@@ -49,7 +54,9 @@ module Web::Controllers::Sheets
     include ::Controller
 
     def call(params)
-      op = Sheet::Create.run(params) do |op|
+      puts
+      puts "@@@@@ #{params.to_h.inspect}"
+      op = Sheet::Create.run(params.to_h) do |op|
         redirect_to routes.sheet_path(op.model.id)
       end
 
@@ -63,7 +70,8 @@ module Web::Controllers::Sheets
     def call(params)
       op = Sheet::Update.present(params)
 
-      render Web::Sheet::Cell::Show, op.model
+      # render Web::Sheet::Cell::Show, op.model
+      render Web::Sheet::Cell::New, op.contract
     end
   end
 end
