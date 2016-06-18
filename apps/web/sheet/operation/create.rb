@@ -1,14 +1,14 @@
 require "disposable/twin/struct"
 require "trailblazer/operation/model"
 
-require "reform/form/active_model/validations"
+require "reform/form/dry"
 
 module Sheet
   class Create < Trailblazer::Operation
     contract do
       # include Reform::Form::Composition
 
-      feature Reform::Form::ActiveModel::Validations
+      feature Reform::Form::Dry
 
       property :title#, on: :sheet
       # property :tags, on: :content

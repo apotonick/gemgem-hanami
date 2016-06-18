@@ -10,8 +10,9 @@ gem "cells-hamlit"
 gem "hamlit"
 
 gem "trailblazer", path: "../trailblazer"
-gem "activemodel"
 gem "formular", path: "../formular"
+gem "reform", "2.2.0.rc1"
+gem "dry-validation"
 
 gem "pg"
 
