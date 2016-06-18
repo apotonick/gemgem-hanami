@@ -11,7 +11,8 @@ gem "hamlit"
 
 gem "trailblazer", path: "../trailblazer"
 gem "reform", "2.2.0.rc1"
-gem "dry-validation", ">= 0.7.4"
+gem "dry-validation"#, ">= 0.7.4"
+
 gem "formular", path: "../formular"
 
 

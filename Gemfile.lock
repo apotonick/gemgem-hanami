@@ -152,7 +152,7 @@ DEPENDENCIES
   capybara
   cells
   cells-hamlit
-  dry-validation (>= 0.7.4)
+  dry-validation
   formular!
   hamlit
   hanami (>= 0.7.2)
