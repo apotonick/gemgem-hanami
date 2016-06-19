@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
 
+    = controller.javascript "jquery-3.0.0" # TODO: use cell's packaging.
     = controller.javascript "bootstrap.min"
     = controller.javascript "offcanvas"
     =# csrf_meta_tags
@@ -50,6 +51,3 @@
         .col-xs-12.col-sm-9
           <h1>Shrink Width to Collapse Sidebar</h1>
           = yield
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-

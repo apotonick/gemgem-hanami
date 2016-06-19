@@ -54,9 +54,19 @@ module Web::Controllers::Sheets
     include ::Controller
 
     def call(params)
-      puts
-      puts "@@@@@ #{params.to_h.inspect}"
       op = Sheet::Create.run(params.to_h) do |op|
+        redirect_to routes.sheet_path(op.model.id)
+      end
+
+      render Web::Sheet::Cell::New, op.contract
+    end
+  end
+
+  class Update
+    include ::Controller
+
+    def call(params)
+      op = Sheet::Update.run(params) do |op|
         redirect_to routes.sheet_path(op.model.id)
       end
 

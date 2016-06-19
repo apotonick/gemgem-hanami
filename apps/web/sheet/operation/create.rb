@@ -22,6 +22,8 @@ module Sheet
         collection :notes do
           include Disposable::Twin::Struct
           property :text
+          property :id, deserializer: { writeable: false }
+          property :created_at
         end
       end
 
@@ -46,7 +48,21 @@ module Sheet
       #    collection :notes block.
       Note = Struct.new(:text)
       # we need to define notes on top-level as reform would ignore this otherwise.
-      collection :notes, virtual: true, populator: ->(options) { notes.append Hash.new } do
+      collection :notes, virtual: true, populator: ->(fragment:, **) {
+        return skip! if fragment["text"] == "" # TODO: test me
+
+        puts "@@@@@ #{fragment.inspect}"
+        if (id = fragment["id"]) && id != ""
+          puts "looking for  #{id.inspect}"
+          twin = notes.find { |n|
+            n.id == id }
+        else
+          twin = notes.append({ id: SecureRandom.hex(3), created_at: Time.now }) # TODO: test me
+puts "))) #{twin.id.inspect}"
+          twin
+        end
+
+         } do
         # include Disposable::Twin::Struct
         # property :text # not needed since the returned twin in the populator is the original one from above!
       end
