@@ -1,41 +1,38 @@
 require "disposable/twin/struct"
 require "trailblazer/operation/model"
 
-require "reform/form/dry"
+require "disposable/twin/property/hash"
 
 module Sheet
   class Create < Trailblazer::Operation
+    module Populator
+      class Notes
+        include Uber::Callable
+
+        def call(fragment:, **)
+          return skip! if fragment["text"] == "" # TODO: test me
+          return notes.find { |n| n.id == id } if (id = fragment["id"]) && id != ""
+          notes.append({ id: SecureRandom.hex(3), created_at: Time.now }) # TODO: test me
+        end
+      end
+    end
+
     contract do
-      # include Reform::Form::Composition
+      include Disposable::Twin::Property::Hash
 
-      feature Reform::Form::Dry
-
-      property :title#, on: :sheet
-      # property :tags, on: :content
-
-
-      property :content do
-        include Disposable::Twin::Struct
-
+      property :title
+      property :content, field: :hash do
         property :tags
 
-        collection :notes do
-          include Disposable::Twin::Struct
+        collection :notes, populator: Populator::Notes.new do
           property :text
           property :id, deserializer: { writeable: false }
           property :created_at
         end
       end
 
-      # property :tags, virtual: true
-      def tags
-        content.tags
-      end
-
-      def tags=(v)
-        # raise v.inspect
-        content.tags = v
-      end
+      unnest :tags, from: :content
+      unnest :notes, from: :content
 
 
       # 1. mapped attributes have to be defined :virtual, so reform doesn't try to read/write them from/to the top model.
@@ -46,45 +43,19 @@ module Sheet
       #    that's why there's Hash.new
       # 5. again, content.notes gives us a nested Struct form so we actually don't need any block content for the top
       #    collection :notes block.
-      Note = Struct.new(:text)
-      # we need to define notes on top-level as reform would ignore this otherwise.
-      collection :notes, virtual: true, populator: ->(fragment:, **) {
-        return skip! if fragment["text"] == "" # TODO: test me
 
-        puts "@@@@@ #{fragment.inspect}"
-        if (id = fragment["id"]) && id != ""
-          puts "looking for  #{id.inspect}"
-          twin = notes.find { |n|
-            n.id == id }
-        else
-          twin = notes.append({ id: SecureRandom.hex(3), created_at: Time.now }) # TODO: test me
-puts "))) #{twin.id.inspect}"
-          twin
-        end
-
-         } do
-        # include Disposable::Twin::Struct
-        # property :text # not needed since the returned twin in the populator is the original one from above!
-      end
 
       # this is called in populator and returns a Struct object.
-      def notes
-        content.notes
-      end
+      # def notes
+      #   content.notes
+      # end
 
-      # needed to make reform process this field.
-      property :tags, virtual: true
+      # # needed to make reform process this field.
+      # property :tags, virtual: true
     end
 
     include Model
     model ::Sheet::Persistence, :create # Sheet::Persistence
-
-    def model!(*)
-      m= super
-      puts "@@@@@ #{m.inspect}"
-      m.content={ notes: [] } unless m.content
-      m
-    end
 
     # class Content < Disposable::Twin
     #   property :content

@@ -8,7 +8,7 @@ module Sheet
   end
 end
 
-
+require "hamlit/block"
 
 require "trailblazer/cells"
 require_relative "../sheet/operation/create.rb"

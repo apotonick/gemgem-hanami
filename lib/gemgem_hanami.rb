@@ -58,3 +58,14 @@ Hanami::Mailer.configure do
   end
 end.load!
 
+
+
+# FIXME: my initializers don't get loaded.
+
+require "disposable/twin/property/hash"
+
+require "reform/form/dry"
+Reform::Form.class_eval do
+  feature Reform::Form::Dry
+end
+

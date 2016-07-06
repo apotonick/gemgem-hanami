@@ -1,7 +1,9 @@
 %h1 Bla
 
-- require "formular/frontend/bootstrap3"
-= Formular::Bootstrap3::Builder.new(model: model, errors: {}).form(config) do |f|
+- require "formular/builders/bootstrap3"
+- builder = Formular::Builders::Bootstrap3.new(model: model)
+
+= builder.form(config) do |f|
   = '<input type="hidden" name="_method" value="PATCH">' unless model.model.new?
 
   .row
@@ -12,15 +14,20 @@
   .row
     = f.textarea :tags, placeholder: "Tags", rows: 1
 
-  = f.nested :notes do |n|
-    = n.input :id, type: :hidden
-    = n.textarea :text, placeholder: "Note", rows: 4
-
+  %fieldset
+    = f.collection :notes do |n|
+      .row
+        = n.input :id, type: :hidden
+        = n.textarea :text, placeholder: "Note", rows: 4
 
   .row
-    = f.button type: "Submit", class: ["btn btn-primary"]
+    %button{id: "addNote"} more
+    =# f.button value: "more", id: "addNote"
 
+  .row
+    = f.submit value: "Submit", class: %w(btn-primary btn-lg btn-block)
 
+  = f.end
 
 %pre.row
   = model.model.content
