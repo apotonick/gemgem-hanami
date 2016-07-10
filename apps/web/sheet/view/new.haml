@@ -18,7 +18,7 @@
     = f.collection :notes do |n|
       .row
         = n.input :id, type: :hidden
-        = n.textarea :text, placeholder: "Note", rows: 4
+        = n.textarea :text, placeholder: "Note"
 
   .row
     %button{id: "addNote"} more

@@ -12,7 +12,8 @@ gem "hamlit-block", "0.3.1"
 
 gem "trailblazer", path: "../trailblazer"
 gem "formular", path: "../formular"
-gem "reform", "2.2.1"
+# gem "reform", "2.2.1"
+gem "reform", path: "../reform"
 gem "dry-validation"
 gem "disposable"#, path: "../disposable"
 
@@ -24,4 +25,3 @@ group :test do
 end
 
 # gem "disposable", path: "../disposable"
-# gem "reform", path: "../reform"

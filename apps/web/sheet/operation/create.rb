@@ -6,14 +6,15 @@ require "disposable/twin/property/hash"
 module Sheet
   class Create < Trailblazer::Operation
     module Populator
-      class Notes
-        include Uber::Callable
+      Notes = ->(fragment:, **) do
+        puts "@@@@@ #{self.class.definitions.inspect}"
+        return skip! if fragment["text"] == "" # TODO: test me
 
-        def call(fragment:, **)
-          return skip! if fragment["text"] == "" # TODO: test me
-          return notes.find { |n| n.id == id } if (id = fragment["id"]) && id != ""
-          notes.append({ id: SecureRandom.hex(3), created_at: Time.now }) # TODO: test me
+        if (id = fragment["id"]) && id != ""
+          return notes.find { |n| n.id == id }
         end
+
+        notes.append({ id: SecureRandom.hex(3), created_at: Time.now }) # TODO: test me
       end
     end
 
@@ -24,7 +25,8 @@ module Sheet
       property :content, field: :hash do
         property :tags
 
-        collection :notes, populator: Populator::Notes.new do
+        # collection :notes, populator: Populator::Notes.new do
+        collection :notes, populator: Populator::Notes do
           property :text
           property :id, deserializer: { writeable: false }
           property :created_at
