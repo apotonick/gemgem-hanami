@@ -30,6 +30,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara_minitest_spec (1.0.5)
+      capybara (>= 2)
+      minitest (>= 4)
     cells (4.1.1)
       tilt (>= 1.4, < 3)
       uber (>= 0.0.9)
@@ -158,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   capybara
+  capybara_minitest_spec
   cells
   cells-hamlit
   disposable

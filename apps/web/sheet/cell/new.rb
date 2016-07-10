@@ -21,6 +21,14 @@ module Web::Sheet
         model.model.new?
       end
 
+      # test me, with new and updatable
+      def last_updated_at
+        return if model.model.created_at.nil?
+        return %{Created #{model.model.created_at.strftime("%d %B %Y, %H:%M")}} if model.model.updated_at.nil?
+
+        %{Last updated: #{model.model.updated_at.strftime("%d %B %Y, %H:%M")}}
+      end
+
       def config
         { action: url, method: new? ? :post : :post }
       end

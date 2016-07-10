@@ -22,6 +22,7 @@ gem "pg"
 group :test do
   gem 'minitest'
   gem 'capybara'
+  gem "capybara_minitest_spec"
 end
 
 # gem "disposable", path: "../disposable"

@@ -1,6 +1,7 @@
 # DB.extension :pg_array
 # DB.extension :pg_json
 
+Sequel::Model.plugin :timestamps
 Sequel::Model.strict_param_setting = false
 Sequel::Database.extension :pg_json
 module Sheet

@@ -9,6 +9,7 @@
     = # controller.stylesheet 'application'#, media: 'all'
     = controller.stylesheet "bootstrap.min" # TODO: use cell's packaging.
     = controller.stylesheet "offcanvas" # TODO: use cell's packaging.
+    = controller.stylesheet "nick" # TODO: use cell's packaging.
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -51,5 +52,4 @@
 
         <!-- main area -->
         .col-xs-12.col-sm-9
-          <h1>Shrink Width to Collapse Sidebar</h1>
           = yield
