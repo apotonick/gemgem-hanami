@@ -5,10 +5,10 @@ module Web::Sheet
       include ::Cell::Hamlit
       self.view_paths = ["./apps"]
 
-      # def show
-      #   # "cells rule!"
-      #   render :new
-      # end
+      def sheet
+        model.model
+      end
+
       def routes
         context[:routes]
       end
@@ -23,11 +23,15 @@ module Web::Sheet
 
       # test me, with new and updatable
       def last_updated_at
-        return if model.model.created_at.nil?
-        return %{Created #{model.model.created_at.strftime("%d %B %Y, %H:%M")}} if model.model.updated_at.nil?
-
-        %{Last updated: #{model.model.updated_at.strftime("%d %B %Y, %H:%M")}}
+        return if sheet.created_at.nil?
+        return %{Created #{date}} if sheet.updated_at.nil?
+        %{Last updated: #{date}}
       end
+
+      def date
+        sheet.created_at.strftime("%d %B %Y, %H:%M")
+      end
+
 
       def config
         { action: url, method: new? ? :post : :post }
