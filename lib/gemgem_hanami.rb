@@ -70,7 +70,8 @@ Reform::Form.class_eval do
 end
 
 Trailblazer::Cell.class_eval do
-  include ::Cell::Hamlit
+  # include ::Cell::Hamlit
+  include ::Cell::Slim
   self.view_paths = ["./apps/web"]
 
   def controller

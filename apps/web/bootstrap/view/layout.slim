@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title Sheets
+    /# TODO: use cell's packaging.
+    /= controller.stylesheet 'application'#, media: 'all'
+    = controller.stylesheet "bootstrap.min"
+    = controller.stylesheet "offcanvas"
+    = controller.stylesheet "nick"
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+
+    = controller.javascript "jquery-3.0.0"
+    = controller.javascript "bootstrap.min"
+    = controller.javascript "offcanvas"
+    = controller.javascript "autosize"
+    = controller.javascript "nick_fixme"
+    /= csrf_meta_tags
+  body
+    .page-container
+
+    <!-- top navbar -->
+    .navbar.navbar-default.navbar-fixed-top role="navigation"
+      .container
+        .navbar-header
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#{routes.new_sheet_path}">Sheets</a>
+
+
+    .container
+      .row.row-offcanvas.row-offcanvas-left
+
+        <!-- sidebar -->
+        .col-xs-6.col-sm-3.sidebar-offcanvas#sidebar role="navigation"
+          = cell(Bootstrap::Cell::Sidebar)
+
+        <!-- main area -->
+        .col-xs-12.col-sm-9
+          = yield
