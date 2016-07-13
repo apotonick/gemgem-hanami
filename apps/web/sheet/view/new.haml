@@ -1,33 +1,34 @@
 - require "formular/builders/bootstrap3"
 - builder = Formular::Builders::Bootstrap3.new(model: model)
 
-= builder.form(config) do |f|
-  = '<input type="hidden" name="_method" value="PATCH">' unless model.model.new?
+- f = builder.form(config)
+= f.to_s
+= '<input type="hidden" name="_method" value="PATCH">' unless model.model.new?
 
-  .row
-    = f.input :title, placeholder: "Title"
-  .row
-    = last_updated_at
+.row
+  = f.input :title, placeholder: "Title"
+.row
+  = last_updated_at
 
-  -# 3.times do |i|
-  - #f.nested :content do |c|
-  .row
-    = f.textarea :tags, placeholder: "Tags", rows: 1
+-# 3.times do |i|
+- #f.nested :content do |c|
+.row
+  = f.textarea :tags, placeholder: "Tags", rows: 1
 
-  %fieldset
-    = f.collection :notes do |n|
-      .row
-        = n.input :id, type: :hidden
-        = n.textarea :text, placeholder: "Note"
+%fieldset
+  = f.collection :notes do |n|
+    .row
+      = n.input :id, type: :hidden
+      = n.textarea :text, placeholder: "Note"
 
-  .row
-    %button{id: "addNote"} more
-    =# f.button value: "more", id: "addNote"
+.row
+  %button{id: "addNote"} more
+  =# f.button value: "more", id: "addNote"
 
-  .row
-    = f.submit value: "Submit", class: %w(btn-primary btn-lg btn-block)
+.row
+  = f.submit value: "Submit", class: %w(btn-primary btn-lg btn-block)
 
-  = f.end
+= f.end
 
 %pre.row
   = model.model.content

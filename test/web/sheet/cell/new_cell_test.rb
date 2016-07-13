@@ -34,7 +34,7 @@ describe Web::Sheet::Cell do
 
       # Web::Sheet::Cell::New.(op.contract, context: { routes: controller.send(:routes) }).()
       html = cell(Web::Sheet::Cell::New, op.contract, context: { routes: controller.send(:routes) }).()
-      puts html
+
       html.must_have_css %{#title[value="Duran Duran"]}
       html.must_have_content /Created/
     end
@@ -56,7 +56,7 @@ describe Web::Sheet::Cell do
 
       # Web::Sheet::Cell::New.(op.contract, context: { routes: controller.send(:routes) }).()
       html = cell(Web::Sheet::Cell::New, op.contract, context: { routes: controller.send(:routes) }).()
-      puts html
+
       html.must_have_css %{#title[value="Duran Duran, y'all!"]}
       html.must_have_content /Last updated/
     end

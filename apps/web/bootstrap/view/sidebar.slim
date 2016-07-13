@@ -1,0 +1,7 @@
+ul.nav
+  - items.each do |sheet|
+    li
+      = controller.link_to sheet.title, routes.sheet_path(sheet)
+
+  <li class="active"><a href="#">Home</a></li>
+

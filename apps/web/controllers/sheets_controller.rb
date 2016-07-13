@@ -17,11 +17,13 @@ require_relative "../sheet/operation/update.rb"
 require_relative "../sheet/cell/new.rb"
 require_relative "../sheet/cell/show.rb"
 require_relative "../bootstrap/cell/layout.rb"
+require_relative "../bootstrap/cell/sidebar.rb"
 
 module Controller
   def self.included(includer)
     includer.send :include, Web::Action
     includer.send :include, Hanami::Assets::Helpers # FIXME.
+    includer.send :include, Hanami::Helpers::LinkToHelper
   end
 
   # Render the content cell with the "app-wide" layout cell.

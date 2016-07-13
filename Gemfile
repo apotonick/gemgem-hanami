@@ -7,6 +7,7 @@ gem 'hanami-model'#, '~> 0.5'
 gem "cells"#, path: "../cells"
 gem "trailblazer-cells"#, path: "../trailblazer-cells"
 gem "cells-hamlit"#, path: "../cells-hamlit"
+gem "cells-slim"#, path: "../cells-hamlit"
 gem "hamlit", "2.5.0"
 gem "hamlit-block", "0.3.1"
 
